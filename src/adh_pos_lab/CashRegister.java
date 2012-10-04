@@ -21,8 +21,16 @@ public class CashRegister {
         new Customer("Bill", "123 Onahill Drive"),
         new Customer("Sally", "99 Church Street")
     };
+    
     //has a receipt
-    //has methods to work with the receipt
+    // Receipt receipt;
+    
+    
+    //has methods to work with the receipt.
+    
     // public beginNewSale(); which creates a new blank receipt with a line
+    // public addItemToSale(); adds an item to the receipt.  Receipt creates
+    // new line item to store the product information, but we don't really need
+    // that information right now
     // item array of size 0.
 }
