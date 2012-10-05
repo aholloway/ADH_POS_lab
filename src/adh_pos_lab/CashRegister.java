@@ -41,10 +41,22 @@ public class CashRegister {
         }
 
     }
+    
     //has methods to work with the receipt.
-    // public beginNewSale(); which creates a new blank receipt with a line
-    // public purchaseItem(); adds an item to the receipt.  Receipt creates
-    // new line item to store the product information, but we don't really need
-    // that information right now
-    // item array of size 0.
+    public void beginNewTransaction(){
+        receipt = new Receipt();
+    } 
+    
+    public void printReceipt(){
+        //prints receipt with subtotals which calculate the amounts for the 
+        // each line item and the subtotals and totals
+        // should go through each item of the lineItem array and get the product
+        // num, desc, basePrice, qty, extended price, extended discount,
+        // discounted extended price
+        // and then the total of all extended prices, extended discounts,
+        // and the grand total discounted extended price
+        
+    }
+    
+    
 }
