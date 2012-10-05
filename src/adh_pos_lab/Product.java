@@ -14,6 +14,7 @@ public class Product {
     private String prodNum;
     private String prodDesc;
     private double basePrice;
+    private DiscountStrategy discountStrategy;
 
     public Product(String prodNum, String prodDesc, double basePrice) {
         this.setProdNum(prodNum);
@@ -46,5 +47,14 @@ public class Product {
     public final void setBasePrice(double basePrice) {
         //throw Exception if < 0
         this.basePrice = basePrice;
+    }
+
+    public DiscountStrategy getDiscountStrategy() {
+        return discountStrategy;
+    }
+
+    public void setDiscountStrategy(DiscountStrategy discountStrategy) {
+        //cannot be null
+        this.discountStrategy = discountStrategy;
     }
 }
