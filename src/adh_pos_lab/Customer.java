@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package adh_pos_lab;
 
 /**
@@ -24,6 +21,9 @@ public class Customer {
 
     public final void setName(String name) {
         //throw Exception if null or ""
+        if (name==null || name ==""){
+            throw new IllegalArgumentException("Name cannot be null or blank.");
+        }
         this.name = name;
     }
 
@@ -33,6 +33,10 @@ public class Customer {
 
     public final void setAddress(String address) {
         //throw Exception if null or ""
+        if (address==null || address ==""){
+            throw new IllegalArgumentException("Address cannot be null or"
+                    + " blank.");
+        }
         this.address = address;
     }
     

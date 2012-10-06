@@ -1,3 +1,4 @@
+
 package adh_pos_lab;
 
 /**
@@ -19,6 +20,9 @@ public class LineItem {
 
     public final void setProduct(Product product) {
         //product cannot be null
+        if (product==null){
+            throw new IllegalArgumentException("Product cannot be null");
+        }
         this.product = product;
     }
 
@@ -28,6 +32,9 @@ public class LineItem {
 
     public final void setQuantity(int quantity) {
         //quantity cannot be negative
+        if (quantity<0){
+            throw new IllegalArgumentException("Quantity cannot be negative.");
+        }
         this.quantity = quantity;
     }
     
