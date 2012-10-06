@@ -23,6 +23,7 @@ public class CashRegister {
     };
     //has a receipt
     private Receipt receipt;
+    private Customer currentCustomer;
     private DiscountStrategy currentSale; //set in constructor.
     
     public CashRegister(DiscountStrategy currentSale){
@@ -48,14 +49,27 @@ public class CashRegister {
     }
     
     //has methods to work with the receipt.
-    public final void beginNewTransaction(){
+    public final void beginNewTransaction(String custName){
         receipt = new Receipt();
+        for (Customer c : customers) {
+            if (custName.equals(c.getName())){
+                currentCustomer=c;
+            }
+        }        
     } 
+
+    
     
     
     
     
     public final void printReceipt(){
+        
+        System.out.println("Thank you for shopping at Kolz Dept Store!");
+        System.out.println("");
+        System.out.println(currentCustomer.getName());
+        System.out.println(currentCustomer.getAddress());
+        System.out.println("");
         receipt.print();
         //prints receipt with subtotals which calculate the amounts for the 
         // each line item and the subtotals and totals

@@ -60,7 +60,9 @@ public class Receipt {
         double extendedDiscountTotal=0;
         double extendedDiscountPriceTotal=0;
                 
-        System.out.println("PrdNum  Product Description   RegPrc\tQnt\t"
+        
+        
+        System.out.println("PrdNum  Product Description   \tRegPrc\tQnt\t"
                 + "ExtPrc\tExtDsc\tNetPrc");
 
         for (LineItem item : lineItems) {
@@ -75,7 +77,7 @@ public class Receipt {
             System.out.println(
                     //ideally this would be better formatted.
                     item.getProduct().getProdNum()  
-                    + item.getProduct().getProdDesc() 
+                    + item.getProduct().getProdDesc() + "\t" 
                     + nf.format(basePrice) + "\t"
                     + quant + "\t"
                     + nf.format(extendedPrice) + "\t"
@@ -85,11 +87,11 @@ public class Receipt {
             extendedDiscountTotal+=extendedDiscount;
         }
         extendedDiscountPriceTotal=extendedBasePriceTotal-extendedDiscountTotal;
-        System.out.println("Total before disocount: "+
+        System.out.println("Total before disocount:   "+
                 nf.format(extendedBasePriceTotal));
-        System.out.println("Total disocount: "+
+        System.out.println("Total disocount:          "+
                 nf.format(extendedDiscountTotal));
-        System.out.println("Grand total: "+
+        System.out.println("Grand total:              "+
                 nf.format(extendedDiscountPriceTotal));
     }
 }
