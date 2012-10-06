@@ -9,6 +9,7 @@ public class StartUp {
         CashRegister cr=new CashRegister(new XmasSaleStrategy());
         cr.beginNewTransaction();
         cr.addItemToSale("500", 2);
+        cr.addItemToSale("A40", 3);
         cr.printReceipt();
     }
 }
