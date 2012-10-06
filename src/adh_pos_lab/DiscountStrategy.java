@@ -15,4 +15,5 @@ public interface DiscountStrategy {
      * to calculate the discount.
      *
      */
+    public double returnDiscount(Product product,int quantity);
 }
