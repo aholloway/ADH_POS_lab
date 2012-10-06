@@ -17,7 +17,7 @@ public class Receipt {
     }
 
     public final void beginNewTransaction() {
-        
+
         lineItems = new LineItem[0];
     }
 
@@ -54,12 +54,14 @@ public class Receipt {
         double extendedPrice = 0;
         double extendedDiscount = 0;
         double extendedDiscountedPrice = 0;
-        
+
         //build these totals while adding the receipt
-        double extendedBasePriceTotal=0;
-        double extendedDiscountTotal=0;
-        double extendedDiscountPriceTotal=0;
-                
+        double extendedBasePriceTotal = 0;
+        double extendedDiscountTotal = 0;
+        double extendedDiscountPriceTotal = 0;
+
+        System.out.println("Product Num   Product Desc         Unit Price  "
+                + "Quantity   Extended Price   Extended Discount    Net Price");
 
 
         for (LineItem item : lineItems) {
@@ -73,22 +75,23 @@ public class Receipt {
 
             System.out.println(
                     //ideally this would be better formatted.
-                    item.getProduct().getProdNum() + ",\t"
+                    item.getProduct().getProdNum() +",\t"
                     + item.getProduct().getProdDesc() + ",\t"
                     + nf.format(basePrice) + ",\t"
                     + quant + ",\t"
                     + nf.format(extendedPrice) + ",\t"
                     + nf.format(extendedDiscount) + ",\t"
                     + nf.format(extendedDiscountedPrice));
-            extendedBasePriceTotal+=extendedPrice;
-            extendedDiscountTotal+=extendedDiscount;
+
+            extendedBasePriceTotal += extendedPrice;
+            extendedDiscountTotal += extendedDiscount;
         }
-        extendedDiscountPriceTotal=extendedBasePriceTotal-extendedDiscountTotal;
-        System.out.println("Total before disocount: "+
-                nf.format(extendedBasePriceTotal));
-        System.out.println("Total disocount: "+
-                nf.format(extendedDiscountTotal));
-        System.out.println("Grand total: "+
-                nf.format(extendedDiscountPriceTotal));
+        extendedDiscountPriceTotal = extendedBasePriceTotal - extendedDiscountTotal;
+        System.out.println("Total before disocount: "
+                + nf.format(extendedBasePriceTotal));
+        System.out.println("Total disocount: "
+                + nf.format(extendedDiscountTotal));
+        System.out.println("Grand total: "
+                + nf.format(extendedDiscountPriceTotal));
     }
 }
