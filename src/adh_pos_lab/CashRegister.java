@@ -12,8 +12,8 @@ public class CashRegister {
     //has a product array (this will later be stored in a database)
     //arrays should be set in constructor
     private Product[] products = {
-        new Product("500   ", "Baseball Hat         ", 19.95),
-        new Product("A40   ", "Pez Dispenser - Shrek", 1.95),
+        new Product("500", "Baseball Hat", 19.95),
+        new Product("A40", "Pez Dispenser - Shrek", 1.95),
         new Product("B24245", "Tshirt - XL - Badgers", 14.99)
     };
     //has a customer array
