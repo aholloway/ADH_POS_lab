@@ -1,4 +1,3 @@
-
 package adh_pos_lab;
 
 /**
@@ -28,7 +27,7 @@ public class CashRegister {
     public CashRegister() {
         setCurrentSale(new NoSaleStrategy());
     }
-    
+
     //constructor sets current sale
     public CashRegister(DiscountStrategy currentSale) {
         setCurrentSale(currentSale);
@@ -47,10 +46,12 @@ public class CashRegister {
             }
         }
 
-        // if found, add the lineItem to the receipt
-        if (product != null) {
-            receipt.addLineItem(product, qty);
+        if (product == null) {
+            throw new IllegalArgumentException("Product not found.");
         }
+
+        receipt.addLineItem(product, qty);
+
 
     }
 
@@ -63,14 +64,22 @@ public class CashRegister {
 
     // private method to set customer name
     private void setCustomer(String custName) {
+        Customer customer = null;
         for (Customer c : customers) {
+
             if (custName.equals(c.getName())) {
-                currentCustomer = c;
+                // first customer we find we assume is currnet customer and
+                // stop searching.
+                customer = c;
                 break;
-            } else {
-                throw new IllegalArgumentException("Customer not found");
             }
         }
+        // if customer is not found, it will be null
+        if (customer == null) {
+            throw new IllegalArgumentException("Customer not found");
+        }
+        currentCustomer = customer;
+
     }
 
     public final void printReceipt() {
