@@ -9,10 +9,14 @@ public class CashRegister {
 
     //has a product array (this will later be stored in a database)
     private Product[] products = {
-        new Product("500     ", "Baseball Hat          ", 19.95),
-        new Product("A40     ", "Pez Dispenser - Shrek ", 1.95),
-        new Product("B24245  ", "Tshirt - XL - Badgers ", 14.99),
-        new Product("597589  ", "Bicycle Chain and Lock", 12.95)
+        new Product("500     ", "Baseball Hat          ", 19.95,
+            new PercentOffDiscountStrategy(.15)),
+        new Product("A40     ", "Pez Dispenser - Shrek ", 1.95,
+            new QuantityDiscountStrategy(0,2,6)),
+        new Product("B24245  ", "Tshirt - XL - Badgers ", 14.99,
+            new PercentOffDiscountStrategy(0)),
+        new Product("597589  ", "Bicycle Chain and Lock", 12.95,
+            new PercentOffDiscountStrategy(.25))
     };
     //has a customer array
     private Customer[] customers = {
@@ -21,18 +25,7 @@ public class CashRegister {
     };
     private Receipt receipt; //set with new transaction
     private Customer currentCustomer; //set with new transaction
-    private DiscountStrategy currentSale; //set in constructor.
-
-    //constructor with no parameters sets sale stategy to NoSaleStrategy
-    public CashRegister() {
-        setCurrentSale(new NoSaleStrategy());
-    }
-
-    //constructor sets current sale
-    public CashRegister(DiscountStrategy currentSale) {
-        setCurrentSale(currentSale);
-    }
-
+        
     /**
      * When adding an item to a sale you need to look up the item in the
      * database. Here we use the prodId to find product in the above array
@@ -93,23 +86,5 @@ public class CashRegister {
         //row and the totals.
         receipt.print();
 
-    }
-
-    public final DiscountStrategy getCurrentSale() {
-        return currentSale;
-    }
-
-    public final void setCurrentSale(DiscountStrategy currentSale) {
-        if (currentSale == null) {
-
-            throw new IllegalArgumentException("Discount Strategy cannot be "
-                    + "null");
-        }
-
-        this.currentSale = currentSale;
-        //apply sale to all products.
-        for (Product p : products) {
-            p.setDiscountStrategy(currentSale);
-        }
     }
 }

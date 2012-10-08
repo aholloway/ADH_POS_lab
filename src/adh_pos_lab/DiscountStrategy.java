@@ -12,5 +12,7 @@ public interface DiscountStrategy {
      * to calculate the discount.
      *
      */
-    public double returnDiscount(Product product,int quantity);
+    public abstract double returnDiscount(Product product,int quantity);
+    public abstract double getPercentOff();
+    public abstract void setPercentOff(double percentOff);
 }

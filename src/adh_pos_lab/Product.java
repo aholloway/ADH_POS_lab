@@ -15,10 +15,12 @@ public class Product {
     private double basePrice;
     private DiscountStrategy discountStrategy;
 
-    public Product(String prodNum, String prodDesc, double basePrice) {
+    public Product(String prodNum, String prodDesc, double basePrice,
+            DiscountStrategy discountStrategy) {
         this.setProdNum(prodNum);
         this.setProdDesc(prodDesc);
         this.setBasePrice(basePrice);
+        this.setDiscountStrategy(discountStrategy);
     }
 
     public final String getProdNum() {
@@ -60,11 +62,11 @@ public class Product {
         this.basePrice = basePrice;
     }
 
-    public DiscountStrategy getDiscountStrategy() {
+    public final DiscountStrategy getDiscountStrategy() {
         return discountStrategy;
     }
 
-    public void setDiscountStrategy(DiscountStrategy discountStrategy) {
+    public final void setDiscountStrategy(DiscountStrategy discountStrategy) {
         //cannot be null
         if (discountStrategy==null){
             throw new IllegalArgumentException("Discount Strategy cannot be"
