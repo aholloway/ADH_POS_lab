@@ -10,26 +10,24 @@ package adh_pos_lab;
 public class StartUp {
     public static void main(String[] args){
         CashRegister cr=new CashRegister();
-        cr.beginNewTransaction("Sally");
+        cr.beginNewTransaction("2423");
         cr.addItemToSale("500     ", 2);
         cr.addItemToSale("B24245  ", 3);
         cr.printReceipt();
         
         System.out.println("");
-        cr.beginNewTransaction("Bill");
+        cr.beginNewTransaction("1");
         cr.addItemToSale("A40     ", 6);
         cr.addItemToSale("597589  ",1);
         cr.printReceipt();
-             
-        //bad code causes errors.  
-        // currently it is legal for the strategy to be swapped at the 
-        // register.  But this would be nice if there were coupons involved
-        // that gave a certain amount off the purchase.
+        
+        //Test the quantity Discount Strategy
         System.out.println("");
-        //cr.beginNewTransaction("Bob");  //Bob is not a customer
-        //cr.addItemToSale("X", 6);  //"X" is not a recognized product  
-        //cr.addItemToSale("A40     ", -2); //-2 is not a valid quantity.
+        cr.beginNewTransaction("1");
+        cr.addItemToSale("A40     ",1);
+        cr.addItemToSale("A40     ",7);
         cr.printReceipt();
+        //seems to work!
                 
     }
 }

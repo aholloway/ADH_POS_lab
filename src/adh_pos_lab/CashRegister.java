@@ -12,7 +12,7 @@ public class CashRegister {
         new Product("500     ", "Baseball Hat          ", 19.95,
             new PercentOffDiscountStrategy(.15)),
         new Product("A40     ", "Pez Dispenser - Shrek ", 1.95,
-            new QuantityDiscountStrategy(0,2,6)),
+            new QuantityDiscountStrategy(.10,2,6)),
         new Product("B24245  ", "Tshirt - XL - Badgers ", 14.99,
             new PercentOffDiscountStrategy(0)),
         new Product("597589  ", "Bicycle Chain and Lock", 12.95,
@@ -20,8 +20,8 @@ public class CashRegister {
     };
     //has a customer array
     private Customer[] customers = {
-        new Customer("Bill", "123 Onahill Drive"),
-        new Customer("Sally", "99 Church Street")
+        new Customer("1","Bill", "123 Onahill Drive"),
+        new Customer("2423","Sally", "99 Church Street")
     };
     private Receipt receipt; //set with new transaction
     private Customer currentCustomer; //set with new transaction
@@ -56,11 +56,11 @@ public class CashRegister {
     }
 
     // private method to set customer name
-    private void setCustomer(String custName) {
+    private void setCustomer(String custNo) {
         Customer customer = null;
         for (Customer c : customers) {
 
-            if (custName.equals(c.getName())) {
+            if (custNo.equals(c.getCustNo())) {
                 // first customer we find we assume is currnet customer and
                 // stop searching.
                 customer = c;

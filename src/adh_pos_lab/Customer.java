@@ -7,10 +7,12 @@ package adh_pos_lab;
  */
 public class Customer {
     //customer information: name, address
+    private String custNo;
     private String name;
     private String address;
 
-    public Customer(String name, String address) {
+    public Customer(String custNo, String name, String address) {
+        this.setCustNo(custNo);
         this.setName(name);
         this.setAddress(address);
     }
@@ -38,6 +40,19 @@ public class Customer {
                     + " blank.");
         }
         this.address = address;
+    }
+
+    public final String getCustNo() {
+        return custNo;
+    }
+
+    public final void setCustNo(String custNo) {
+        //throw Exception if null or ""
+        if (custNo==null || custNo ==""){
+            throw new IllegalArgumentException("Customer number cannot be null"
+                    + " or blank.");
+        }
+        this.custNo = custNo;
     }
     
 }
