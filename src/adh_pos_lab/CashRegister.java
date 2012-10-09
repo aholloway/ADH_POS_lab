@@ -8,6 +8,7 @@ package adh_pos_lab;
 public class CashRegister {
 
     //has a product array (this will later be stored in a database)
+    //better to be stored in line item instead.
     private Product[] products = {
         new Product("500     ", "Baseball Hat          ", 19.95,
             new PercentOffDiscountStrategy(.15)),
@@ -19,6 +20,7 @@ public class CashRegister {
             new PercentOffDiscountStrategy(.25))
     };
     //has a customer array
+    //better to be stored in receipt class.
     private Customer[] customers = {
         new Customer("1","Bill", "123 Onahill Drive"),
         new Customer("2423","Sally", "99 Church Street")
