@@ -1,5 +1,7 @@
 package adh_pos_lab;
 
+import java.util.*;
+
 /**
  * Cash Register is the main class
  *
@@ -7,34 +9,43 @@ package adh_pos_lab;
  */
 public class CashRegister {
 
-    //has a product array (this will later be stored in a database)
-    //better to be stored in line item instead.
-    private Product[] products = {
-        new Product("500     ", "Baseball Hat          ", 19.95,
-            new PercentOffDiscountStrategy(.15)),
-        new Product("A40     ", "Pez Dispenser - Shrek ", 1.95,
-            new QuantityDiscountStrategy(.10,2,6)),
-        new Product("B24245  ", "Tshirt - XL - Badgers ", 14.99,
-            new PercentOffDiscountStrategy(0)),
-        new Product("597589  ", "Bicycle Chain and Lock", 12.95,
-            new PercentOffDiscountStrategy(.25))
-    };
-    //has a customer array
-    //better to be stored in receipt class.
-    private Customer[] customers = {
-        new Customer("1","Bill", "123 Onahill Drive"),
-        new Customer("2423","Sally", "99 Church Street")
-    };
+    private Map<String, Product> products;
+    private Map<String, Customer> customers;
     private Receipt receipt; //set with new transaction
     private Customer currentCustomer; //set with new transaction
+
+    public CashRegister() {
+        Product p1 = new Product("500     ", "Baseball Hat          ", 19.95,
+                new PercentOffDiscountStrategy(.15));
+        Product p2 = new Product("A40     ", "Pez Dispenser - Shrek ", 1.95,
+                new QuantityDiscountStrategy(.10, 2, 6));
+        Product p3 = new Product("B24245  ", "Tshirt - XL - Badgers ", 14.99,
+                new PercentOffDiscountStrategy(0));
+        Product p4 = new Product("597589  ", "Bicycle Chain and Lock", 12.95,
+                new PercentOffDiscountStrategy(.25));
+
+        products.put(p1.getProdNum(), p1);
+        products.put(p2.getProdNum(), p2);
+        products.put(p3.getProdNum(), p3);
+        products.put(p4.getProdNum(), p4);
+
+        Customer c1 = new Customer("1", "Bill", "123 Onahill Drive");
+        Customer c2 = new Customer("2423", "Sally", "99 Church Street");
         
+        customers.put(c1.getCustNo(), c1);
+        customers.put(c2.getCustNo(), c2);
+
+    }
+
     /**
      * When adding an item to a sale you need to look up the item in the
      * database. Here we use the prodId to find product in the above array
      */
     public final void addItemToSale(String prodId, int qty) {
         Product product = null;
-        for (Product p : products) {
+        ArrayList<Product> productList = new ArrayList<>(products.values());
+        
+        for (Product p : productList) {
             if (prodId.equals(p.getProdNum())) {
                 product = p;
                 break;
@@ -60,7 +71,9 @@ public class CashRegister {
     // private method to set customer name
     private void setCustomer(String custNo) {
         Customer customer = null;
-        for (Customer c : customers) {
+        ArrayList<Customer> customerList = new ArrayList<>(customers.values());
+        
+        for (Customer c : customerList) {
 
             if (custNo.equals(c.getCustNo())) {
                 // first customer we find we assume is currnet customer and
